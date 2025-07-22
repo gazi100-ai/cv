@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আব্দুল্লাহ আল নোমান গাজী | ব্যাংকিং পেশাদার</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #004b23;
+            --secondary: #008538;
+            --accent: #38b000;
+            --light: #f9f9f9;
+            --dark: #0d1b2a;
+            --gray: #6c757d;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5fff7 0%, #e0f7e9 100%);
+            color: var(--dark);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .dark-mode {
+            background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%);
+            color: #f0f0f0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 20px 60px;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><path fill="rgba(0,0,0,0.1)" d="M45.9,-42.1C56.8,-32.1,61.7,-10.7,58.5,10.3C55.2,31.2,43.8,51.6,25.7,62.4C7.6,73.2,-17.2,74.3,-37.8,64.4C-58.4,54.4,-74.8,33.5,-77.6,10.3C-80.3,-12.9,-69.4,-37.3,-52.1,-48C-34.7,-58.7,-10.9,-55.6,10.3,-53.9C31.6,-52.3,35,-52.1,45.9,-42.1Z" transform="translate(100 100)"/></svg>') no-repeat;
+            background-size: cover;
+            opacity: 0.2;
+        }
+
+        .controls {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            display: flex;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        .control-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            backdrop-filter: blur(3px);
+        }
+
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .profile-container {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            margin: 0 auto 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05) rotate(5deg);
+            border-color: var(--accent);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+
+        .position {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            text-decoration: none;
+            backdrop-filter: blur(3px);
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        section {
+            background-color: white;
+            margin: 40px auto;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            max-width: 900px;
+        }
+
+        .dark-mode section {
+            background-color: #1b263b;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        section:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 7px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        h2 {
+            color: var(--primary);
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .dark-mode h2 {
+            color: var(--accent);
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 25px;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, rgba(0, 75, 35, 0.05) 0%, rgba(0, 133, 56, 0.05) 100%);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            transition: var(--transition);
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .dark-mode .skill-card {
+            background: linear-gradient(135deg, rgba(0, 75, 35, 0.1) 0%, rgba(0, 133, 56, 0.1) 100%);
+        }
+
+        .skill-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-card i {
+            font-size: 3.2rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            background: rgba(0, 133, 56, 0.1);
+            width: 90px;
+            height: 90px;
+            line-height: 90px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            transition: var(--transition);
+        }
+
+        .skill-card:hover i {
+            background: rgba(56, 176, 0, 0.15);
+            transform: scale(1.1);
+        }
+
+        .skill-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .dark-mode .skill-card h3 {
+            color: var(--accent);
+        }
+
+        .skill-card p {
+            color: var(--gray);
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .progress-bar {
+            background-color: #e9ecef;
+            border-radius: 20px;
+            height: 16px;
+            margin-top: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            height: 100%;
+            border-radius: 20px;
+            position: relative;
+            transition: width 1.2s ease-out;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .progress-text {
+            position: absolute;
+            right: 15px;
+            top: -35px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--secondary);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 5px 12px;
+            border-radius: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 16px 35px;
+            text-decoration: none;
+            border-radius: 60px;
+            margin-top: 25px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+        }
+
+        .btn i {
+            transform: scale(1.2);
+        }
+
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            margin-top: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            background: rgba(0, 75, 35, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            transition: var(--transition);
+        }
+
+        .dark-mode .contact-item {
+            background: rgba(0, 75, 35, 0.1);
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            background: rgba(56, 176, 0, 0.08);
+        }
+
+        .contact-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .contact-text {
+            flex: 1;
+        }
+
+        .contact-text h4 {
+            color: var(--primary);
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .dark-mode .contact-text h4 {
+            color: var(--accent);
+        }
+
+        .contact-text p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .float-animation {
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+            padding: 70px 0 40px;
+            margin-top: 60px;
+            position: relative;
+            clip-path: polygon(0 25%, 100% 0, 100% 100%, 0 100%);
+        }
+
+        .dark-mode footer {
+            background: linear-gradient(135deg, #0a471f 0%, #0b5a27 100%);
+        }
+
+        footer p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .copyright {
+            margin-top: 25px;
+            font-size: 0.95rem;
+            opacity: 0.7;
+        }
+
+        /* Language Switch Styles */
+        .language-switch {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 40px;
+            padding: 15px 25px;
+            display: flex;
+            gap: 12px;
+            z-index: 100;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .language-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .language-btn.active {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 80px 20px 50px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .position {
+                font-size: 1.1rem;
+            }
+
+            .controls {
+                top: 15px;
+                right: 15px;
+            }
+            
+            .control-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 30px 20px;
+                margin: 30px 0;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .language-switch {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="controls">
+            <button class="control-btn" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+        
+        <div class="container">
+            <div class="profile-container">
+                <img src="001.png" alt="Abdullah Al Noman Gazi" class="profile-pic float-animation">
+                <h1 id="name">আব্দুল্লাহ আল নোমান গাজী</h1>
+                <p class="position" id="position">অপারেশন ম্যানেজার, আল আরাফাহ ইসলামী ব্যাংক</p>
+                
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/gazi-noman-160453376/"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.facebook.com/gazinoman444"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/noman11521"><i class="fab fa-twitter"></i></a>
+                    <a href="https://github.com/gazi100-ai"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <h2 id="about-title">আমার সম্পর্কে</h2>
+            <div class="about-text">
+                <p id="about-para1">আমি একজন অভিজ্ঞ অপারেশন ম্যানেজার, বর্তমানে আল-আরাফাহ্ ইসলামী ব্যাংকিং খাতে কাজ করছি। ব্যাংকিং অপারেশনের সূক্ষ্মতা ও দায়িত্বপূর্ণ ব্যবস্থাপনার পাশাপাশি আমার রয়েছে ওয়েব ডেভেলপমেন্ট এবং গ্রাফিক ডিজাইনের প্রতি বিশেষ আগ্রহ ও দক্ষতা।</p>
+                <p id="about-para2">HTML, CSS, JavaScript এর মাধ্যমে আধুনিক ওয়েবসাইট ডিজাইন এবং Photoshop ও Illustrator ব্যবহার করে গ্রাফিক ডিজাইনে রয়েছে অভিজ্ঞতা। আর্থিক সেবা খাতের দক্ষতা ও প্রযুক্তিগত জ্ঞানের সমন্বয় করার মাধ্যমে সামগ্রিক ব্যাংকিং অভিজ্ঞতা উন্নত করতে আগ্রহী।</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2 id="skills-title">পেশাদার দক্ষতা</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <i class="fab fa-html5"></i>
+                    <h3 id="skill1-title">HTML</h3>
+                    <p id="skill1-desc">সেমান্টিক ওয়েবসাইট ব্লক তৈরি</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="html-progress"></div>
+                        <div class="progress-text" id="html-text">0%</div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-css3-alt"></i>
+                    <h3 id="skill2-title">CSS</h3>
+                    <p id="skill2-desc">রেস্পন্সিভ ডিজাইন ও অ্যানিমেশন</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="css-progress"></div>
+                        <div class="progress-text" id="css-text">0%</div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-js"></i>
+                    <h3 id="skill3-title">JavaScript</h3>
+                    <p id="skill3-desc">ইন্টারেক্টিভ ওয়েব অ্যাপ্লিকেশন</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="js-progress"></div>
+                        <div class="progress-text" id="js-text">0%</div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-figma"></i>
+                    <h3 id="skill4-title">Photoshop</h3>
+                    <p id="skill4-desc">গ্রাফিক্স ডিজাইন ও ইমেজ এডিটিং</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="ps-progress"></div>
+                        <div class="progress-text" id="ps-text">0%</div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-pen-nib"></i>
+                    <h3 id="skill5-title">Illustrator</h3>
+                    <p id="skill5-desc">ভেক্টর গ্রাফিক্স ও লোগো ডিজাইন</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="ai-progress"></div>
+                        <div class="progress-text" id="ai-text">0%</div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-money-check-alt"></i>
+                    <h3 id="skill6-title">ব্যাংক অপারেশন</h3>
+                    <p id="skill6-desc">ইসলামী ব্যাংকিং সিস্টেম ম্যানেজমেন্ট</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="bank-progress"></div>
+                        <div class="progress-text" id="bank-text">0%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 id="contact-title">যোগাযোগ করুন</h2>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4 id="email-label">ইমেইল</h4>
+                        <p>gazinoman44@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4 id="phone-label">ফোন</h4>
+                        <p>+8801856279103</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h4 id="location-label">অবস্থান</h4>
+                        <p id="location-text">আল আরাফাহ ইসলামী ব্যাংক নলছিটি, ঝালকাঠি</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="my-cv.pdf" download class="btn" id="downloadCV">
+               <i class="fas fa-download"></i> 
+             <span id="cv-text">সিভি ডাউনলোড করুন</span>
+             </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p id="footer-text">আমার সাথে যোগাযোগ করতে স্বাগতম</p>
+            <div class="copyright" id="copyright">
+                &copy; ২০২৫ | আব্দুল্লাহ আল নোমান গাজী | সর্বস্বত্ব সংরক্ষিত
+            </div>
+        </div>
+    </footer>
+
+    <!-- Language Switch -->
+    <div class="language-switch">
+        <button class="language-btn active" id="bn-btn">বাংলা</button>
+        <button class="language-btn" id="en-btn">English</button>
+    </div>
+
+    <script>
+        // Text content for language switching
+        const content = {
+            bn: {
+                name: "আব্দুল্লাহ আল নোমান গাজী",
+                position: "অপারেশন ম্যানেজার, আল আরাফাহ ইসলামী ব্যাংক",
+                aboutTitle: "আমার সম্পর্কে",
+                aboutPara1: "আমি একজন পেশাদার অপারেশন ম্যানেজার হিসেবে ইসলামী ব্যাংকিং খাতে কাজ করছি। ব্যাংকিং অপারেশন পরিচালনার পাশাপাশি ওয়েব ডেভেলপমেন্ট এবং ডিজাইনের ক্ষেত্রে রয়েছে বিশেষ আগ্রহ।",
+                aboutPara2: "HTML, CSS, JavaScript এর মাধ্যমে আধুনিক ওয়েবসাইট ডিজাইন এবং Photoshop ও Illustrator ব্যবহার করে গ্রাফিক ডিজাইনে রয়েছে অভিজ্ঞতা। আর্থিক সেবা খাতের দক্ষতা ও প্রযুক্তিগত জ্ঞানের সমন্বয় করার মাধ্যমে সামগ্রিক ব্যাংকিং অভিজ্ঞতা উন্নত করতে আগ্রহী।",
+                skillsTitle: "পেশাদার দক্ষতা",
+                skill1Title: "HTML",
+                skill1Desc: "সেমান্টিক ওয়েবসাইট ব্লক তৈরি",
+                skill2Title: "CSS",
+                skill2Desc: "রেস্পন্সিভ ডিজাইন ও অ্যানিমেশন",
+                skill3Title: "JavaScript",
+                skill3Desc: "ইন্টারেক্টিভ ওয়েব অ্যাপ্লিকেশন",
+                skill4Title: "Photoshop",
+                skill4Desc: "গ্রাফিক্স ডিজাইন ও ইমেজ এডিটিং",
+                skill5Title: "Illustrator",
+                skill5Desc: "ভেক্টর গ্রাফিক্স ও লোগো ডিজাইন",
+                skill6Title: "ব্যাংক অপারেশন",
+                skill6Desc: "ইসলামী ব্যাংকিং সিস্টেম ম্যানেজমেন্ট",
+                contactTitle: "যোগাযোগ করুন",
+                emailLabel: "ইমেইল",
+                phoneLabel: "ফোন",
+                locationLabel: "অবস্থান",
+                locationText: "আল আরাফাহ ইসলামী ব্যাংক নলছিটি, ঝালকাঠি",
+                cvText: "সিভি ডাউনলোড করুন",
+                footerText: "আমার সাথে যোগাযোগ করতে স্বাগতম",
+                copyright: "&copy; ২০২৫ | আব্দুল্লাহ আল নোমান গাজী | সর্বস্বত্ব সংরক্ষিত"
+            },
+            en: {
+                name: "Abdullah Al Noman Gazi",
+                position: "Operation Manager, Al-Arafah Islami Bank",
+                aboutTitle: "About Me",
+                aboutPara1: "I am a professional Operations Manager working in the Islamic banking sector. Alongside managing banking operations, I have a special interest in web development and design.",
+                aboutPara2: "I have experience in designing modern websites using HTML, CSS, and JavaScript, and graphic design using Photoshop and Illustrator. I am keen on enhancing the overall banking experience by integrating expertise in financial services with technical knowledge.",
+                skillsTitle: "Professional Skills",
+                skill1Title: "HTML",
+                skill1Desc: "Creating semantic website building blocks",
+                skill2Title: "CSS",
+                skill2Desc: "Responsive design and animations",
+                skill3Title: "JavaScript",
+                skill3Desc: "Interactive web applications",
+                skill4Title: "Photoshop",
+                skill4Desc: "Graphics design and image editing",
+                skill5Title: "Illustrator",
+                skill5Desc: "Vector graphics and logo design",
+                skill6Title: "Bank Operations",
+                skill6Desc: "Islamic banking system management",
+                contactTitle: "Contact Me",
+                emailLabel: "Email",
+                phoneLabel: "Phone",
+                locationLabel: "Location",
+                locationText: "Al-Arafah Islami Bank, Nolchity, Jhalokathi",
+                cvText: "Download CV",
+                footerText: "Feel free to get in touch with me",
+                copyright: "&copy; 2025 | Abdullah Al Noman Gazi | All Rights Reserved"
+            }
+        };
+
+        // Language switching function
+        function switchLanguage(lang) {
+            document.getElementById('name').textContent = content[lang].name;
+            document.getElementById('position').textContent = content[lang].position;
+            document.getElementById('about-title').textContent = content[lang].aboutTitle;
+            document.getElementById('about-para1').textContent = content[lang].aboutPara1;
+            document.getElementById('about-para2').textContent = content[lang].aboutPara2;
+            document.getElementById('skills-title').textContent = content[lang].skillsTitle;
+            document.getElementById('skill1-title').textContent = content[lang].skill1Title;
+            document.getElementById('skill1-desc').textContent = content[lang].skill1Desc;
+            document.getElementById('skill2-title').textContent = content[lang].skill2Title;
+            document.getElementById('skill2-desc').textContent = content[lang].skill2Desc;
+            document.getElementById('skill3-title').textContent = content[lang].skill3Title;
+            document.getElementById('skill3-desc').textContent = content[lang].skill3Desc;
+            document.getElementById('skill4-title').textContent = content[lang].skill4Title;
+            document.getElementById('skill4-desc').textContent = content[lang].skill4Desc;
+            document.getElementById('skill5-title').textContent = content[lang].skill5Title;
+            document.getElementById('skill5-desc').textContent = content[lang].skill5Desc;
+            document.getElementById('skill6-title').textContent = content[lang].skill6Title;
+            document.getElementById('skill6-desc').textContent = content[lang].skill6Desc;
+            document.getElementById('contact-title').textContent = content[lang].contactTitle;
+            document.getElementById('email-label').textContent = content[lang].emailLabel;
+            document.getElementById('phone-label').textContent = content[lang].phoneLabel;
+            document.getElementById('location-label').textContent = content[lang].locationLabel;
+            document.getElementById('location-text').textContent = content[lang].locationText;
+            document.getElementById('cv-text').textContent = content[lang].cvText;
+            document.getElementById('footer-text').textContent = content[lang].footerText;
+            document.getElementById('copyright').innerHTML = content[lang].copyright;
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang === 'bn' ? 'bn' : 'en';
+        }
+
+        // Language switch event listeners
+        document.getElementById('bn-btn').addEventListener('click', function() {
+            switchLanguage('bn');
+            this.classList.add('active');
+            document.getElementById('en-btn').classList.remove('active');
+        });
+
+        document.getElementById('en-btn').addEventListener('click', function() {
+            switchLanguage('en');
+            this.classList.add('active');
+            document.getElementById('bn-btn').classList.remove('active');
+        });
+
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlElement = document.documentElement;
+        
+        themeToggle.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark-mode');
+            const icon = themeToggle.querySelector('i');
+            
+            if(htmlElement.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+
+        // Animate progress bars on scroll
+        const progressBars = [
+            { id: 'html', value: 92 },
+            { id: 'css', value: 88 },
+            { id: 'js', value: 75 },
+            { id: 'ps', value: 85 },
+            { id: 'ai', value: 80 },
+            { id: 'bank', value: 95 }
+        ];
+
+        function animateProgressBars() {
+            progressBars.forEach(bar => {
+                const element = document.getElementById(`${bar.id}-progress`);
+                const text = document.getElementById(`${bar.id}-text`);
+                
+                let width = 0;
+                const interval = setInterval(() => {
+                    if (width >= bar.value) {
+                        clearInterval(interval);
+                    } else {
+                        width++;
+                        element.style.width = `${width}%`;
+                        text.innerHTML = `${width}%`;
+                    }
+                }, 20);
+            });
+        }
+
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.bottom >= 0
+            );
+        }
+
+        let animated = false;
+        
+        window.addEventListener('scroll', () => {
+            const skillsSection = document.getElementById('skills');
+            
+            if (isInViewport(skillsSection) && !animated) {
+                animateProgressBars();
+                animated = true;
+            }
+        });
+
+        // Download CV button animation
+        const downloadBtn = document.getElementById('downloadCV');
+        
+        downloadBtn.addEventListener('click', function() {
+            const originalText = document.getElementById('cv-text').textContent;
+            this.innerHTML = `<i class="fas fa-spinner fa-spin"></i> <span id="cv-text">${content[document.documentElement.lang].cvText}...</span>`;
+            
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-check"></i> <span id="cv-text">Download Complete!</span>';
+                this.style.background = 'linear-gradient(135deg, #38b000 0%, #8ac926 100%)';
+                
+                setTimeout(() => {
+                    this.innerHTML = `<i class="fas fa-download"></i> <span id="cv-text">${originalText}</span>`;
+                    this.style.background = 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)';
+                }, 2000);
+            }, 1500);
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Trigger animations when skills section is in view on load
+            const skillsSection = document.getElementById('skills');
+            if (isInViewport(skillsSection)) {
+                animateProgressBars();
+                animated = true;
+            }
+        });
+    </script>
+</body>
+</html>
